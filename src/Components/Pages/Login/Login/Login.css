@@ -1,0 +1,17 @@
+.login-box{
+    height: 400px;
+    margin-top: 150px;
+   
+}
+
+
+
+
+@media screen and (max-width: 680px) {
+    .login-box{
+        height: 250px;
+        margin-top: 0px;
+       
+    }
+    
+  }
