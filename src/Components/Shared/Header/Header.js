@@ -62,6 +62,9 @@ const Header = () => {
                       <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/">Home</Link></Button>
                     </MenuItem>
                     <MenuItem onClick={() => setAnchor(null)}> 
+                    <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/products">Products</Link></Button>
+                    </MenuItem>
+                    <MenuItem onClick={() => setAnchor(null)}> 
                     {user.email ? <Button onClick={logout} style={{color:'black'}}> Logout </Button> : <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/login">Login</Link> </Button>}
                     </MenuItem>
                   </Menu>
@@ -69,7 +72,8 @@ const Header = () => {
               ) : (
                 <div style={{ marginRight: "5rem" }}>
                   <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/">Home</Link></Button>
-                  <Button style={{color:'black'}}> Products </Button>
+                  <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/products">Products</Link></Button>
+                 
                   
                   {/* {user.email ? <Button onClick={logout} style={{color:'black'}}> Logout </Button> : <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/login">Login</Link> </Button>} */}
                   
@@ -88,8 +92,8 @@ const Header = () => {
                            open={open}
                            onClick={handleClose}
                            >
-                               <MenuItem onClick={handleClose}>Profile</MenuItem>
-                               <MenuItem onClick={handleClose}>My Account</MenuItem>
+                               {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+                               <MenuItem onClick={handleClose}>My Account</MenuItem> */}
                                <MenuItem onClick={handleClose}>{user.email && <span onClick={logout}>Logout</span>}</MenuItem>
                            </Menu></span> : <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/login">Login</Link> </Button>}
                   
