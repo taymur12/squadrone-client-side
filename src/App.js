@@ -11,6 +11,7 @@ import Dashboard from './Components/Pages/Dashboard/Dashboard/Dashboard';
 import Pay from './Components/Pages/Dashboard/Pay/Pay';
 import MyOrder from './Components/Pages/Dashboard/MyOrders/MyOrder';
 import Review from './Components/Pages/Dashboard/Review/Review';
+import Footer from './Components/Shared/Footer/Footer';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
             <Details></Details>
           </Route>
       </Switch>
+      <Footer></Footer>
       </Router>
     
       </AuthProvider>
