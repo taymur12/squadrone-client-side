@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Components/Firebase/Firebase.init";
 
@@ -9,19 +9,20 @@ const FirebaseAuth = () => {
     const [error, setError] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [isLoading, setLoading] = useState(true)
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
+   
+
     //google
     const SignInWithGoogle = () => {
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                const user = result.user;
-                setUser(user)
-            })
+        setLoading(true)
+      return  signInWithPopup(auth, googleProvider)
             .catch((error) => {
                 setError(error.message)
-            });
+            })
+            .finally(() => setLoading(false))
     }
 
     //current user
@@ -33,6 +34,7 @@ const FirebaseAuth = () => {
             else {
                 setUser('')
             }
+            setLoading(false)
         })
     }, [])
 
@@ -44,41 +46,47 @@ const FirebaseAuth = () => {
     }
 
     //For Register
-    const registerProcess = e => {
-        e.preventDefault()
+    const registerProcess = (location, history) => {
+        
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                const user = userCredential.user;
-                setUser(user)
+                const destination = location?.state?.from || '/'
+                history.replace(destination)
+                setError('')
+
             })
             .catch((error) => {
                 setError(error.message)
-            });
+            })
+            .finally(() => setLoading(false))
     }
 
-    // For login
-    const loginProcess = e =>{
-        e.preventDefault()
+   // login Process
+    const loginProcess = ( location, history) => {
         signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          setUser(user)
-        })
-        .catch((error) => {
-            setError(error.message)
-        });
-      
+            .then((userCredential) => {
+                const destination = location?.state?.from || '/'
+                history.replace(destination)
+                setError('')
+            })
+            .catch((error) => {
+                setError(error.message)
+            })
+            .finally(()=> setLoading(false))
     }
     //logout
     const logout = () => {
+        setLoading(true)
         signOut(auth).then(() => {
             setUser({})
         }).catch((error) => {
             setError(error.message)
-        });
+        })
+            .finally(() => setLoading(false))
     }
-
-    return { user, error, logout, SignInWithGoogle, registerProcess, loginProcess, userEmail, userPassword }
+    
+    return { user, error, logout, SignInWithGoogle, registerProcess, loginProcess, userEmail, userPassword, isLoading }
 }
 
 export default FirebaseAuth;
+

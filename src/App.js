@@ -12,6 +12,7 @@ import Pay from './Components/Pages/Dashboard/Pay/Pay';
 import MyOrder from './Components/Pages/Dashboard/MyOrders/MyOrder';
 import Review from './Components/Pages/Dashboard/Review/Review';
 import Footer from './Components/Shared/Footer/Footer';
+import PrivateRoute from './Components/Pages/Login/PrivateRoute/PrivateRoute';
 
 
 function App() {
@@ -48,9 +49,9 @@ function App() {
           <Route path="/register">
             <Register></Register>
           </Route>
-          <Route path="/details/:productId">
+          <PrivateRoute path="/details/:productId">
             <Details></Details>
-          </Route>
+          </PrivateRoute>
       </Switch>
       <Footer></Footer>
       </Router>

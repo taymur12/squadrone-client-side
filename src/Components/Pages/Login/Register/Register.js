@@ -1,17 +1,32 @@
 
 import { Box, Grid, TextField, Button, Typography, Alert} from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 // import FirebaseAuth from '../../../../hooks/useFirebase';
 
 const Register = () => {
     const { SignInWithGoogle, registerProcess, userEmail, userPassword, error } = useAuth();
+
+    const location = useLocation()
+    const history = useHistory()
+    const redirect_uri = location.state?.from || '/home'
+
+    const handleRegSubmit = e => {
+        registerProcess( location, history)
+        e.preventDefault()
+    }
+        const handleGoogleReg = () =>{
+        SignInWithGoogle()
+        .then(result =>{
+            history.push(redirect_uri)
+        })
+    }
     return (
         <Box component="div" sx={{ overflow: 'hidden' }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={5}>
                     <Box className='login-box' sx={{ padding: '40px 20px', width: '90%' }}>
-                        <form onSubmit={registerProcess}>
+                        <form onSubmit={handleRegSubmit}>
                             <Typography variant="h5">
                                 Register
                             </Typography>
@@ -20,7 +35,8 @@ const Register = () => {
                                 Registration Successfully Done — <strong>check it out!</strong>
                             </Alert>} */}
                             {error && <Alert severity="error">{error}</Alert>}
-                            <TextField onBlur={userEmail} name='email' sx={{ width: '80%', margin: '10px 0px' }} label="Name" type="email" />
+                           
+                            <TextField onBlur={userEmail} name='email' sx={{ width: '80%', margin: '10px 0px' }} label="Email" type="email" />
                             <br />
                             <TextField onBlur={userPassword} sx={{ width: '80%', margin: '10px 0px' }} label="Password" type="password" autoComplete="current-password" />
                             <br />
@@ -29,7 +45,7 @@ const Register = () => {
                                 Already Register? <Link to="/login">Login</Link>
                             </Typography>
                         </form>
-                        <Button sx={{ marginTop: '15px' }} variant="contained" onClick={SignInWithGoogle}>Sign In Google</Button>
+                        <Button sx={{ marginTop: '15px' }} variant="contained" onClick={handleGoogleReg}>Sign In Google</Button>
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={7}>
