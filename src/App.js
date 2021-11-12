@@ -7,6 +7,10 @@ import Register from './Components/Pages/Login/Register/Register';
 import Header from './Components/Shared/Header/Header';
 import AuthProvider from './Context/AuthProvider';
 import Products from './Components/Pages/Products/Products'
+import Dashboard from './Components/Pages/Dashboard/Dashboard/Dashboard';
+import Pay from './Components/Pages/Dashboard/Pay/Pay';
+import MyOrder from './Components/Pages/Dashboard/MyOrders/MyOrder';
+import Review from './Components/Pages/Dashboard/Review/Review';
 
 
 function App() {
@@ -24,6 +28,18 @@ function App() {
           </Route>
           <Route path="/products">
             <Products></Products>
+          </Route>
+          <Route path="/pay">
+            <Pay></Pay>
+          </Route>
+          <Route path="/myorder">
+            <MyOrder></MyOrder>
+          </Route>
+          <Route path="/review">
+            <Review></Review>
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard></Dashboard>
           </Route>
         <Route path='/login'>
         <Login></Login>

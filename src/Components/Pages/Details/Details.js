@@ -64,7 +64,6 @@ const Details = () => {
                                     <input style={{width:'60%', padding:'10px', display:'block', margin:'10px'}} {...register("address", { maxLength: 80 })} placeholder='Address' />
 
                                     <input value="Place Order" type="submit" />
-                                    
                                 </form>
                             </Box>
                         </Typography>

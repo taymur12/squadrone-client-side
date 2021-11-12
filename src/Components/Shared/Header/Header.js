@@ -64,6 +64,9 @@ const Header = () => {
                     <MenuItem onClick={() => setAnchor(null)}> 
                     <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/products">Products</Link></Button>
                     </MenuItem>
+                    <MenuItem > 
+                    {user.email && <Button><Link style={{textDecoration:'none', color:'black'}} to="/dashboard">Dashboard</Link></Button>}
+                    </MenuItem>
                     <MenuItem onClick={() => setAnchor(null)}> 
                     {user.email ? <Button onClick={logout} style={{color:'black'}}> Logout </Button> : <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/login">Login</Link> </Button>}
                     </MenuItem>
@@ -94,6 +97,7 @@ const Header = () => {
                            >
                                {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
                                <MenuItem onClick={handleClose}>My Account</MenuItem> */}
+                               <MenuItem onClick={handleClose}>{user.email && <span><Link style={{textDecoration:'none', color:'black'}} to="/dashboard">Dashboard</Link></span>}</MenuItem>
                                <MenuItem onClick={handleClose}>{user.email && <span onClick={logout}>Logout</span>}</MenuItem>
                            </Menu></span> : <Button style={{color:'black'}}> <Link style={{textDecoration:'none', color:'black'}} to="/login">Login</Link> </Button>}
                   
