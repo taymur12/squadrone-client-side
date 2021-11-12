@@ -9,6 +9,7 @@ const Review = () => {
             <Typography variant="h6" gutterBottom component="div">
                 Review Us
             </Typography>
+            
         </div>
     );
 };
