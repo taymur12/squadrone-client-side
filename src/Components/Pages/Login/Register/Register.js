@@ -1,18 +1,27 @@
 
 import { Box, Grid, TextField, Button, Typography, Alert} from '@mui/material';
+import { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 // import FirebaseAuth from '../../../../hooks/useFirebase';
 
 const Register = () => {
-    const { SignInWithGoogle, registerProcess, userEmail, userPassword, error } = useAuth();
-
+    const { SignInWithGoogle, registerProcess, error } = useAuth();
+    const [loginData, setLoginData] = useState({})
     const location = useLocation()
     const history = useHistory()
     const redirect_uri = location.state?.from || '/home'
 
+    const handleOnBlur = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData }
+        newLoginData[field] = value;
+        setLoginData(newLoginData)
+    }
+
     const handleRegSubmit = e => {
-        registerProcess( location, history)
+        registerProcess( loginData.email , loginData.password, location, history)
         e.preventDefault()
     }
         const handleGoogleReg = () =>{
@@ -36,9 +45,9 @@ const Register = () => {
                             </Alert>} */}
                             {error && <Alert severity="error">{error}</Alert>}
                            
-                            <TextField onBlur={userEmail} name='email' sx={{ width: '80%', margin: '10px 0px' }} label="Email" type="email" />
+                            <TextField onBlur={handleOnBlur} name='email' sx={{ width: '80%', margin: '10px 0px' }} label="Email" type="email" />
                             <br />
-                            <TextField onBlur={userPassword} sx={{ width: '80%', margin: '10px 0px' }} label="Password" type="password" autoComplete="current-password" />
+                            <TextField onBlur={handleOnBlur} sx={{ width: '80%', margin: '10px 0px' }} name="password" label="Password" type="password" autoComplete="current-password" />
                             <br />
                             <Button type='submit' variant="contained">Register</Button>
                             <Typography sx={{ marginTop: '13px', color: 'gray' }} variant="p" component="div">

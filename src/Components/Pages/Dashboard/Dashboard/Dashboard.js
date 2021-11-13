@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 
 const Dashboard = () => {
-    const { user, logout } = useAuth()
+    const { user, logout, admin } = useAuth()
    
     return (
         <div>
@@ -14,40 +14,41 @@ const Dashboard = () => {
                 <Grid item xs={4} md={2} sx={{ borderRight: '1px solid lightgray' }} >
                     <h3>Menubar</h3>
                    
-                    <Typography variant="h6" gutterBottom component="div">
-                    <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/">Home</Link>
+                    
+                   <Typography variant="h6" gutterBottom component="div">
+                    {!admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/">Home</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                    <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/products">Products</Link>
+                    {!admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/products">Products</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                    <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/pay">Payment</Link>
+                   { !admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/pay">Payment</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                    <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/myorder">My Order</Link>
+                   {!admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/myorder">My Order</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                    <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/review">Review</Link>
+                    {!admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/review">Review</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                    <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/review">Manage All Products</Link>
+                    {admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/manageallproduct">Manage All Products</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                    <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/addproduct">Add A Product</Link>
+                    {admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/addproduct">Add A Product</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                    <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/makeadmin">Make  Admin</Link>
+                   { admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/makeadmin">Make  Admin</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                    <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/makeadmin">Manage Products</Link>
+                   { admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/makeadmin">Manage Products</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
@@ -68,7 +69,7 @@ const Dashboard = () => {
                         sx={{ width: 156, height: 156 , display: 'block', margin: '0 auto', paddingBottom:'10px'}}
                     />
                    {user.displayName &&  <Typography variant="h5" gutterBottom component="div">
-                        Name: {user.displayName}
+                        Hey {user.displayName}
                     </Typography>}
                     <Typography variant="h6" gutterBottom component="div">
                         Email: {user.email}

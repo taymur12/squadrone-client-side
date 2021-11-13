@@ -1,5 +1,5 @@
 import { Box, Grid, TextField, Button, Typography, Alert } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import loginImg from '../../../../DroneImg/extra/mini_3099609.jpg'
 import useAuth from '../../../../hooks/useAuth';
@@ -7,13 +7,22 @@ import useAuth from '../../../../hooks/useAuth';
 import './Login.css'
 
 const Login = () => {
-    const { SignInWithGoogle, loginProcess, userEmail, userPassword, error } = useAuth()
+    const { SignInWithGoogle, loginProcess,  error } = useAuth()
+    const [loginData, setLoginData] = useState({})
     const location = useLocation()
     const history = useHistory()
     const redirect_uri = location.state?.from || '/home'
 
+    const handleOnChange = e => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData }
+        newLoginData[field] = value;
+        setLoginData(newLoginData)
+    }
+
     const handleLoginSubmit = e => {
-        loginProcess( location, history)
+        loginProcess( loginData.email, loginData.password,  location, history)
         e.preventDefault()
     }
         const handleGoogleLogin = () =>{
@@ -36,9 +45,9 @@ const Login = () => {
                                 Login
                             </Typography>
                             {error && <Alert severity="error">{error}</Alert>}
-                            <TextField onBlur={userEmail} sx={{ width: '80%', margin: '10px 0px' }} label="Name" type="email" />
+                            <TextField onBlur={handleOnChange} sx={{ width: '80%', margin: '10px 0px' }} name="email" label="Email" type="email" />
                             <br />
-                            <TextField onBlur={userPassword} sx={{ width: '80%', margin: '10px 0px' }} label="Password" type="password" autoComplete="current-password" />
+                            <TextField onBlur={handleOnChange} sx={{ width: '80%', margin: '10px 0px' }} name="password" label="Password" type="password" autoComplete="current-password" />
                             <br />
                             <Button type='submit' variant="contained">Login</Button>
                             <Typography sx={{ marginTop: '13px', color: 'gray' }} variant="p" component="div">

@@ -6,11 +6,19 @@ import Product from './Product';
 
 const Products = () => {
     const [products, setProducts] = useState([])
+    const [added, setadded] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/addnewproducts')
+            .then(res => res.json())
+            .then(data => setadded(data))
+    },[])
+
     return (
         <div>
             <h2>This is rpoducts</h2>
@@ -24,7 +32,15 @@ const Products = () => {
                              <Product key={product.title} allProduct={product}></Product>
                           </Grid>) 
                     }
-               
+                   
+                    {
+                        added.map(product =>  <Grid item xs={12} sm={4} md={4}>
+                             <Product key={product.title} allProduct={product}></Product>
+                          </Grid>) 
+                    }
+                   
+                    
+
             </Grid>
         </div>
         </div>

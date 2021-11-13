@@ -13,6 +13,8 @@ import MyOrder from './Components/Pages/Dashboard/MyOrders/MyOrder';
 import Review from './Components/Pages/Dashboard/Review/Review';
 import Footer from './Components/Shared/Footer/Footer';
 import PrivateRoute from './Components/Pages/Login/PrivateRoute/PrivateRoute';
+import MakeAdmin from './Components/Pages/Dashboard/Admin/MakeAdmin/MakeAdmin';
+import AddProduct from './Components/Pages/Dashboard/Admin/AddProduct/AddProduct';
 
 
 function App() {
@@ -43,6 +45,13 @@ function App() {
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>
+          <PrivateRoute path="/makeadmin">
+            <MakeAdmin></MakeAdmin>
+          </PrivateRoute>
+          <PrivateRoute path="/addproduct">
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+
         <Route path='/login'>
         <Login></Login>
           </Route>
