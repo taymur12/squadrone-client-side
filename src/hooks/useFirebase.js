@@ -36,7 +36,7 @@ const FirebaseAuth = () => {
             }
             setLoading(false)
         })
-    }, [])
+    }, [auth])
 
     const userEmail = e => {
         setEmail(e.target.value)

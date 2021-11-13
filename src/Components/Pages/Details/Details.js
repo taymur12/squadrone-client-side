@@ -17,7 +17,7 @@ const Details = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setDetails(data))
-    }, [])
+    }, [productId])
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {

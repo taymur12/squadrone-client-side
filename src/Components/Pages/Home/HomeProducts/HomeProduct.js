@@ -7,7 +7,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const HomeProduct = ({allProduct}) => {
-    const {_id ,title, price, imgs, description, rating} = allProduct
+    const {_id ,title, price, imgs, description} = allProduct
     return (
         <div>
             <Card sx={{ maxWidth: 345 }}>

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 const Product = ({allProduct}) => {
-    const {_id ,title, price, imgs, description, rating} = allProduct
+    const {_id ,title, price, imgs, description} = allProduct
     return (
         <div>
              <Card sx={{ maxWidth: 345 }}>
