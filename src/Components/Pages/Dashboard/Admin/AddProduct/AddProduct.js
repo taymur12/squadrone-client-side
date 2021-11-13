@@ -6,7 +6,7 @@ import axios from 'axios'
 const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        axios.post('https://fierce-hollows-37330.herokuapp.com/addnewproduct', data)
+        axios.post('https://fierce-hollows-37330.herokuapp.com/addnewproducts', data)
         .then(res => {
             
             alert('This Product has been Added Successfully!')

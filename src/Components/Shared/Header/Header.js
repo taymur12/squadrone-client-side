@@ -39,7 +39,7 @@ const Header = () => {
           <AppBar style={{backgroundColor:'white'}}>
             <Toolbar>
               <Typography className={classes.title}>
-                <img style={{width:'150px'}}   src={headerImg} alt="" />
+               <Link to="/home"> <img style={{width:'150px'}}   src={headerImg} alt="" /></Link>
               </Typography>
               {isMobile ? (
                 <div>

@@ -12,7 +12,7 @@ const HomeProducts = () => {
 
     return (
         <div>
-            <h2>Features Of Drone</h2>
+            <h1 style={{textAlign:'center', marginTop:'50px'}}>Features Of Drone</h1>
 
             <Grid style={{width:'90%', margin:'40px auto'}} container spacing={{ xs: 2, md: 5 }} columns={{ xs: 4, sm: 8, md: 12 }}>
 
