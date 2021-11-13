@@ -8,13 +8,13 @@ const Products = () => {
     const [products, setProducts] = useState([])
     const [added, setadded] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://fierce-hollows-37330.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/addnewproducts')
+        fetch('https://fierce-hollows-37330.herokuapp.com/addnewproducts')
             .then(res => res.json())
             .then(data => setadded(data))
     },[])

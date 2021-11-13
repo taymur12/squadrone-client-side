@@ -21,7 +21,7 @@ const Review = () => {
         const ReviewData = {...reviewInfo}
        
         //send  data to server
-        fetch('http://localhost:5000/review', {
+        fetch('https://fierce-hollows-37330.herokuapp.com/review', {
             method:'POST',
             headers: {
                 'content-type' : 'application/json'

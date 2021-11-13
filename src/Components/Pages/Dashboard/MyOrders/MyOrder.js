@@ -15,12 +15,12 @@ const MyOrder = () => {
 
     console.log(orders)
     useEffect(() => {
-        fetch('http://localhost:5000/order')
+        fetch('https://fierce-hollows-37330.herokuapp.com/order')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, []);
     const deleteBtnHandler = id =>{
-        const url =`http://localhost:5000/order/${id}`
+        const url =`https://fierce-hollows-37330.herokuapp.com/order/${id}`
         fetch(url, {
             method: 'Delete'
         })

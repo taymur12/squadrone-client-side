@@ -8,7 +8,7 @@ const MakeAdmin = () => {
     }
     const adminHandle = e =>{
         const user = {email}
-        fetch('http://localhost:5000/newusers/admin', {
+        fetch('https://fierce-hollows-37330.herokuapp.com/newusers/admin', {
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'

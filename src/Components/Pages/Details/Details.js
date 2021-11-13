@@ -13,7 +13,7 @@ const Details = () => {
     const { productId } = useParams();
 
     useEffect(() => {
-        const url = `http://localhost:5000/products/${productId}`
+        const url = `https://fierce-hollows-37330.herokuapp.com/products/${productId}`
         fetch(url)
             .then(res => res.json())
             .then(data => setDetails(data))
@@ -21,7 +21,7 @@ const Details = () => {
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        axios.post('http://localhost:5000/order', data)
+        axios.post('https://fierce-hollows-37330.herokuapp.com/order', data)
             .then(res => {
                 
                 alert('This Product has been ordered successfully!')

@@ -36,7 +36,7 @@ const Dashboard = () => {
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                    {admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/manageallproduct">Manage All Products</Link>}
+                    {admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/manageorder">Manage All Orders</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
@@ -48,7 +48,7 @@ const Dashboard = () => {
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">
-                   { admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/makeadmin">Manage Products</Link>}
+                   { admin && <Link style={{textDecoration:'none', color:'CornflowerBlue', margin:'10px'}} to="/manageproduct">Manage Products</Link>}
                     </Typography>
                     <hr/>
                     <Typography variant="h6" gutterBottom component="div">

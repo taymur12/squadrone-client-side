@@ -11,6 +11,7 @@ const FirebaseAuth = () => {
     // const [password, setPassword] = useState('')
     const [isLoading, setLoading] = useState(true)
     const [admin, setAdmin] = useState(false)
+    const [errors, setErrors] = useState(null)
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -43,10 +44,19 @@ const FirebaseAuth = () => {
     }, [auth])
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/newusers/${user.email}`)
-        
+        const url = `https://fierce-hollows-37330.herokuapp.com/newusers/${user.email}`
+        fetch(url)
+        // .then(res =>{
+        //     console.log(res)
+        //     if(!res.ok){
+        //         throw Error('COULD NOT FETCH THE DATA FOR THE RESOURCE')
+        //     }
+        // })
         .then(res => res.json())
         .then(data => setAdmin(data.admin))
+        .catch(err =>{
+            setErrors(err.message)
+        })
     },[user.email])
 
     // const userEmail = e => {
@@ -101,7 +111,7 @@ const FirebaseAuth = () => {
 
     const saveUser = (email, displayName) =>{
         const user = {email, displayName}
-        fetch('http://localhost:5000/newusers',{
+        fetch('https://fierce-hollows-37330.herokuapp.com/newusers',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

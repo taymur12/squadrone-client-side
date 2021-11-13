@@ -15,6 +15,8 @@ import Footer from './Components/Shared/Footer/Footer';
 import PrivateRoute from './Components/Pages/Login/PrivateRoute/PrivateRoute';
 import MakeAdmin from './Components/Pages/Dashboard/Admin/MakeAdmin/MakeAdmin';
 import AddProduct from './Components/Pages/Dashboard/Admin/AddProduct/AddProduct';
+import ManageProduct from './Components/Pages/Dashboard/Admin/ManageProduct/ManageProduct';
+import ManageAllOrder from './Components/Pages/Dashboard/Admin/ManageAllOrder/ManageAllOrder';
 
 
 function App() {
@@ -39,6 +41,9 @@ function App() {
           <PrivateRoute path="/myorder">
             <MyOrder></MyOrder>
           </PrivateRoute>
+          <PrivateRoute path="/manageorder">
+            <ManageAllOrder></ManageAllOrder>
+          </PrivateRoute>
           <PrivateRoute path="/review">
             <Review></Review>
           </PrivateRoute>
@@ -50,6 +55,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/addproduct">
             <AddProduct></AddProduct>
+          </PrivateRoute>
+          <PrivateRoute path="/manageproduct">
+            <ManageProduct></ManageProduct>
           </PrivateRoute>
 
         <Route path='/login'>
